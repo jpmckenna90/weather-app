@@ -1,3 +1,7 @@
 #basic-addon2:hover{
   cursor: pointer;
 }
+
+li{
+  list-style: none;
+}
