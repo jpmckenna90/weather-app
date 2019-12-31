@@ -16,7 +16,7 @@ function ajaxCall() {
 
   // how can I make these clickable? and then call ajax call but not update the list of cities (actually that part should be easy, can 
   // maybe even write a conditional within this function that says if citylist !contain city. might have to bring in an array and ignore case to do that)
-  $("#citylist").append("<li>" + city);
+  $("#citylist").prepend("<li>" + city);
 
 //prettier-ignore
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
@@ -25,15 +25,15 @@ function ajaxCall() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    updateInfo(response);
-    getUVInfo(response);
+    currentConditions(response);
+    currentUV(response);
     console.log(response);
   });
 }
 
 
 // This function updates card with current city info
-function updateInfo(response) {
+function currentConditions(response) {
   $("#maincard").text(response.name + ", " + now);
   $("#cardtemp").append("<h6>" + response.main.temp);
   $("#cardhumidity").append("<h6>" + response.main.humidity);
@@ -41,7 +41,7 @@ function updateInfo(response) {
 }
 
 // This function retrieves UV info for current city and appends it to the card
-function getUVInfo(response){
+function currentUV(response){
   var cityLat = response.coord.lat;
   var cityLong = response.coord.lon;
   var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + cityLat + "&lon=" + cityLong;

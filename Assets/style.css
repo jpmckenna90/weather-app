@@ -4,4 +4,10 @@
 
 li{
   list-style: none;
+} 
+
+.fiveday{
+  background-color: lightblue;
+  color: white;
+  border-radius: 4px;
 }

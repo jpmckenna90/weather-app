@@ -54,28 +54,31 @@
       </div>
 
       <!-- Column to hold forecast card -->
-      <div class="col-md-9">
-        <div class="card w-75 ml-4 my-2">
+      <div class="col-md-7">
+        <div class="card w-100 ml-4 my-2">
           <div class="card-body">
-            <h5 class="card-title" id="maincard">City & Date</h5>
-            <p class="card-text" id="cardtemp">Temperature</p>
-            <p class="card-text" id="cardhumidity">Humidity</p>
-            <p class="card-text" id="cardwindspeed">Wind Speed</p>
-            <p class="card-text" id="carduv">UV Index</p>
+            <h5 class="card-title text-center" id="maincard">City & Date</h5>
+            <p class="card-text text-center" id="cardtemp">Temperature</p>
+            <p class="card-text text-center" id="cardhumidity">Humidity</p>
+            <p class="card-text text-center" id="cardwindspeed">Wind Speed</p>
+            <p class="card-text text-center" id="carduv">UV Index</p>
             <!-- <a href="#" class="btn btn-primary" id="buttontest">Button</a> -->
           </div>
         </div>
-        <div class="card w-75 ml-4 my-2">
-          <h5>5-Day Forecast:</h5>
-          <ul>
-            <li>Day 1</li>
-            <li>Day 2</li>
-            <li>Day 3</li>
-            <li>Day 4</li>
-            <li>Day 5</li>
-          </ul>
+        <div class="card w-100 ml-4 my-2">
+          <h5 class="text-center">5-Day Forecast</h5>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-2 mx-1 my-2 text-center fiveday" id="day1"><p>hello</p></div>
+            <div class="col-2 mx-1 my-2 text-center fiveday" id="day2"><p>hello</p></div>
+            <div class="col-2 mx-1 my-2 text-center fiveday" id="day3"><p>hello</p></div>
+            <div class="col-2 mx-1 my-2 text-center fiveday" id="day4"><p>hello</p></div>
+            <div class="col-2 mx-1 my-2 text-center fiveday" id="day5"><p>hello</p></div>
+            <div class="col-1"></div>
+          </div>
         </div>
       </div>
+      <div class="col-md-2"></div>
     </div>
     <script
       src="https://kit.fontawesome.com/8d13be2a88.js"
