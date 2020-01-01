@@ -6,8 +6,21 @@ li{
   list-style: none;
 } 
 
+
+
 .fiveday{
   background-color: lightblue;
   color: white;
   border-radius: 4px;
+}
+
+.citylist{
+  font-size: 2em;
+  border-left: 1px solid black;
+  margin: .4em 0em 0em .2em;
+  padding-left: .4em;
+}
+.citylist:hover{
+  cursor:pointer;
+  color:blue;
 }
