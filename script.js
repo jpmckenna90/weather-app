@@ -53,7 +53,14 @@ $(document).ready(function() {
     });
   }
 
+  // Function to generate five day forecast
   function fiveDay(response){
-    
+    var cityID = response.id;
+    $.ajax({
+      url: "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + apiKey,
+      method: "GET"
+    }).then(function(fiveday) {
+      console.log(fiveday);
+    });
   }
 });
