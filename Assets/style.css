@@ -6,11 +6,9 @@ li{
   list-style: none;
 } 
 
-
-
 .fiveday{
-  background-color: lightblue;
-  color: white;
+  background-color: #add8e6;
+  color: black;
   border-radius: 4px;
 }
 
