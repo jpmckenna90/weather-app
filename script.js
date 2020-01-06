@@ -6,6 +6,7 @@ var city = "";
 var now = moment().format("HH:mm");
 
 $(document).ready(function() {
+  
   $("#searchbtn").on("click", function() {
     ajaxCall();
     $("h6").empty();
@@ -89,17 +90,45 @@ $(document).ready(function() {
       // var iconID = "";
 
       for(var i = 0; i < 5; i++){
-        // iconID = fiveday
       $("#day" + [i]).prepend("<h3>" + moment().format("MMMM") + " " + (moment().date() + i));
       $("#day" + [i]).append("<img src='" + "http://openweathermap.org/img/w/" + fiveday.list[i * 8].weather[0].icon + ".png" + "'>");
       $("#day" + [i]).append("<h6>" + "Temp: " + fiveday.list[i * 8].main.temp + " &#8457;");
       $("#day" + [i]).append("<h6>" + "Humidity: " + fiveday.list[i * 8].main.humidity + "%");
-
     }
 
-      console.log(fiveday);
+    
     });
   }
-});
 
-// http://openweathermap.org/img/w/10d.png
+  for(var i = 0; i < localStorage.length; i++){
+    var current
+    // if the city in localstorage is not in the citylist, add it
+    if(!$("#cityitem").textContent === (JSON.stringify(localStorage.key(i)))){
+      $("#citylist").prepend("<li class='citylist'><a id='cityitem'>" + JSON.stringify(localStorage.key(i)));
+    }
+  }
+}
+);
+
+// ! CODE BELOW is localStorage calling to add to dom from javascript quiz - possibly use for reference? 
+
+// $("#initialSubmission").show();
+// $("#initialSubmission")
+//   .unbind("click")
+//   .on("click", function() {
+//     var recordString = $("#initials").val() + "," + userScore;
+//     $("#initials").val("");
+//     recordArray.push(recordString);
+//     var tableValues = recordString.split(",");
+//     $("#scoreTable").append(
+//       "<tr><td>" +
+//         tableValues[0] +
+//         "</td><td>" +
+//         tableValues[1] +
+//         "</td></tr>"
+//     );
+//     $(this).off();
+//     window.localStorage.setItem(localStorageIndex, recordString);
+//     localStorageIndex++;
+    
+//   });
