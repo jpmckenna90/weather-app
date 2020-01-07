@@ -1,5 +1,4 @@
 // !todo possibly better handling of the input? verify it, provide an error if nothing can be produced. 
-// !todo add fahrenheit, percentage, etc. you idiot 
 // !todo general cleanup, add comments 
 
 var apiKey = "226c7f48de6d96ec8e61f348613686a1";
@@ -11,17 +10,21 @@ var cityObj = {};
 
 $(document).ready(function() {
 
+  // Populate city history, if it exists.
   createHistory();
 
+  // Click event to clear city history
   $("#clearhistory").on("click", function(){
     clearHistory();
     $("#citylist").empty();
   })
 
+  // Click event to submit city to be searched
   $("#searchbtn").on("click", function() {
     ajaxCall();
   });
 
+  // Click event to gather weather data from city history buttons
   $("#citylist").on("click", function() {
     city = event.target.textContent.trim();
     var queryURL =
@@ -46,16 +49,17 @@ $(document).ready(function() {
     $(".clearme").empty();
   }
 
-  //This is for current weather - need to implement forecasts
+  // Ajax call for current city
   function ajaxCall() {
     city = $("#cityfield").val();
     alert(city);
     
-    // console.log(city);
+    // Add to city list initially
     $("#citylist").prepend("<li class='citylist'><a id='cityitem'>" + city);
     //prettier-ignore
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
 
+    // Ajax call, gather response and then A: add localStorage item and B: pass response to other functions
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -70,7 +74,7 @@ $(document).ready(function() {
     });
   }
 
-  // This function updates card with current city info
+  // This function updates card with current city weather info
   function currentConditions(response) {
     var currentIcon =
       "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
@@ -109,6 +113,7 @@ $(document).ready(function() {
       method: "GET"
     }).then(function(fiveday) {
 
+      // For loop generates data for each card 
       for (var i = 0; i < 5; i++) {
         $("#day" + [i]).prepend(
           "<h3>" + moment().format("MMMM") + " " + (moment().date() + i)
@@ -130,6 +135,7 @@ $(document).ready(function() {
     });
   }
 
+  // Function to create city history (if it exists) on page load
   function createHistory() {
     for (var i = 0; i < localStorage.length; i++) {
       // Variable to hold item of current place in local storage
@@ -145,6 +151,7 @@ $(document).ready(function() {
   }
 });
 
+  // Function to clear history, when called 
   function clearHistory(){
     localStorage.clear();
   }
