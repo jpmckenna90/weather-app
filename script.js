@@ -24,7 +24,6 @@ $(document).ready(function() {
 
   $("#citylist").on("click", function() {
     city = event.target.textContent.trim();
-    console.log(city);
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
@@ -50,6 +49,9 @@ $(document).ready(function() {
   //This is for current weather - need to implement forecasts
   function ajaxCall() {
     city = $("#cityfield").val();
+    alert(city);
+    
+    // console.log(city);
     $("#citylist").prepend("<li class='citylist'><a id='cityitem'>" + city);
     //prettier-ignore
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
@@ -74,9 +76,9 @@ $(document).ready(function() {
       "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
     $("#maincard").text(response.name + ", " + now);
     $("#maincard").append("<img src='" + currentIcon + "'>");
-    $("#cardtemp").append("<h5 class='clearme'>" + response.main.temp);
-    $("#cardhumidity").append("<h5 class='clearme'>" + response.main.humidity);
-    $("#cardwindspeed").append("<h5 class='clearme'>" + response.wind.speed);
+    $("#cardtemp").append("<h5 class='clearme'>" + response.main.temp + " &#8457;");
+    $("#cardhumidity").append("<h5 class='clearme'>" + response.main.humidity + " %");
+    $("#cardwindspeed").append("<h5 class='clearme'>" + response.wind.speed + " MPH");
     currentUV(response);
   }
 
